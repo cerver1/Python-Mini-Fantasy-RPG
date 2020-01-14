@@ -23,6 +23,14 @@ flux = Spell("Flux", 5)
 lux = Spell("Lux", 5)
 wynd = Spell("Wynd", 5)
 
+Spells = dict({
+"fyre": fyre,
+"electrine": electrine,
+"flux": flux,
+"lux": lux,
+"wynd": wynd
+})
+
 def getPlayerInfo():
   print('What is your name?')
   player['name'] = input()
@@ -42,11 +50,9 @@ def getPlayerWeapons():
     print('Fyre | Electrine | Flux | Lux | Wynd')
     while True:
       weaponChoices = player['weapons']
-      spellSelections = input().casefold()
-      if spellSelections == 'Fyre' or 'Electrine' or 'Flux' or 'Lux' or 'Wynd':
-         weaponChoices.append(spellSelections)
-         #can I use a class here?
-       # 
+      spellInput = input().casefold()
+      if spellInput in Spells:
+        weaponChoices.append(Spells[spellInput])
       else:
        print('That isn\'t a valid spell!')
       if len(weaponChoices) == 2:
